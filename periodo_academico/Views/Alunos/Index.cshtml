@@ -7,8 +7,12 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Cadastrar", "Create")
+    @Html.ActionLink("Gerar Alunos", "GerarAlunos")
 </p>
+<p>
+    @Html.ActionLink("Deletar Alunos", "DeletarTudo")
+</p>
+
 <table class="table table-dark">
     <tr>
         <th>
@@ -26,7 +30,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Turma.TurmaId)
+            @Html.DisplayFor(modelItem => item.Turma.Nome)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nome)

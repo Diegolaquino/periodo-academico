@@ -1,5 +1,6 @@
 ﻿using periodo_academico.Models;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Transactions;
 using System.Web.Mvc;
@@ -8,12 +9,12 @@ namespace periodo_academico.Controllers
 {
     public class ProvasController : Controller
     {
-        private ApplicationDbContext context = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Provas
         public ActionResult Index()
         {
-            var provas = context.Provas;
+            var provas = db.Provas;
             return View(provas.ToList());
         }
 
@@ -21,14 +22,14 @@ namespace periodo_academico.Controllers
         {
             using (TransactionScope t = new TransactionScope())
             {
-                var alunos = context.Alunos;
+                var alunos = db.Alunos;
                 Random numeroAleatorio = new Random();
                 foreach (Aluno a in alunos)
                 {
-                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, Nota_1 = numeroAleatorio.Next(0, 10), Nota_2 = numeroAleatorio.Next(0, 10), Nota_3 = numeroAleatorio.Next(0, 10) });
+                    db.Provas.Add(new Prova { AlunoId = a.AlunoId, Nota_1 = numeroAleatorio.Next(0, 10), Nota_2 = numeroAleatorio.Next(0, 10), Nota_3 = numeroAleatorio.Next(0, 10) });
                 }
 
-                context.SaveChanges();
+                db.SaveChanges();
 
                 t.Complete();
             }
@@ -38,15 +39,29 @@ namespace periodo_academico.Controllers
 
         public ActionResult DeletarTudo()
         {
-            context.Database.ExecuteSqlCommand("TRUNCATE TABLE [Provas]");
+            db.Database.ExecuteSqlCommand("DELETE FROM [Provas]");
             return RedirectToAction("Index");
         }
 
-        //public async Task GerandoMediaAluno()
-        //{
-            
+        public ActionResult GerarMedia()
+        {
+            using (TransactionScope t = new TransactionScope())
+            {
+                var provas = db.Provas.ToList();
 
+                foreach (Prova p in provas)
+                {
+                    Aluno a = db.Alunos.Find(p.AlunoId);
+                    // Os números dos pesos foram arredondados
+                    a.Media = (((p.Nota_1 * 2.8) + (p.Nota_2 * 3.30) + (p.Nota_1 * 3.90)) / 10);
+                    db.Entry(a).State = EntityState.Modified;
+                }
 
-        //}
+                db.SaveChanges();
+                t.Complete();
+            }
+
+            return RedirectToAction("Index", "Alunos", null);
+        }
     }
 }

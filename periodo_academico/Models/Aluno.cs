@@ -13,7 +13,7 @@ namespace periodo_academico.Models
         [Key]
         public int AlunoId { get; set; }
         public string Nome { get; set; }
-        public float Media { get; set; }
+        public double Media { get; set; }
 
         public int TurmaId { get; set; }
         public virtual Turma Turma { get; set; }

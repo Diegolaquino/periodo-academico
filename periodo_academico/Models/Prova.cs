@@ -14,13 +14,13 @@ namespace periodo_academico.Models
         public int AlunoId { get; set; }
 
         [Display(Name = "Primeira Prova")]
-        public float Nota_1 { get; set; }
+        public double Nota_1 { get; set; }
 
         [Display(Name = "Segunda Prova")]
-        public float Nota_2 { get; set; }
+        public double Nota_2 { get; set; }
 
         [Display(Name = "Terceira Prova")]
-        public float Nota_3 { get; set; }
+        public double Nota_3 { get; set; }
 
         public virtual Aluno Aluno { get; set; }
 

@@ -17,7 +17,7 @@ namespace periodo_academico.Migrations
                         TurmaId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.AlunoId)
-                .ForeignKey("dbo.Turmas", t => t.TurmaId, cascadeDelete: true)
+                .ForeignKey("dbo.Turmas", t => t.TurmaId, cascadeDelete: false)
                 .Index(t => t.TurmaId);
             
             CreateTable(
