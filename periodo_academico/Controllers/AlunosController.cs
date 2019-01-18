@@ -17,7 +17,7 @@ namespace periodo_academico.Controllers
         // GET: Alunos
         public ActionResult Index()
         {
-            var alunoes = db.Alunos.Include(a => a.Turma);
+            var alunoes = db.Alunos.Include(a => a.Turma).OrderBy(a => a.Media);
             return View(alunoes.ToList());
         }
 

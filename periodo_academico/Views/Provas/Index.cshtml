@@ -7,7 +7,10 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Gerar Provas", "GerarProvas")
+</p>
+<p>
+    @Html.ActionLink("Deletar Provas", "DeletarTudo")
 </p>
 <table class="table">
     <tr>
@@ -20,7 +23,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Nota)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -33,11 +35,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nota)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProvaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProvaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProvaId })
         </td>
     </tr>
 }

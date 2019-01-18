@@ -28,9 +28,9 @@ namespace periodo_academico.Controllers
                 Random numeroAleatorio = new Random();
                 foreach (Aluno a in alunos)
                 {
-                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, NumeroOrdinal = (int)ProvasDoPeriodo.Primeira, Nota = numeroAleatorio.Next(1, 100)/10 });
-                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, NumeroOrdinal = (int)ProvasDoPeriodo.Segunda, Nota = numeroAleatorio.Next(1, 100) / 10 });
-                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, NumeroOrdinal = (int)ProvasDoPeriodo.Terceira, Nota = numeroAleatorio.Next(1, 100) / 10 });
+                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, NumeroOrdinal = (int)ProvasDoPeriodo.Primeira, Nota = numeroAleatorio.Next(0, 10) });
+                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, NumeroOrdinal = (int)ProvasDoPeriodo.Segunda, Nota = numeroAleatorio.Next(0, 10) });
+                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, NumeroOrdinal = (int)ProvasDoPeriodo.Terceira, Nota = numeroAleatorio.Next(0, 10) });
                 }
 
                 context.SaveChanges();
@@ -38,7 +38,13 @@ namespace periodo_academico.Controllers
                 t.Complete();
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeletarTudo()
+        {
+            context.Database.ExecuteSqlCommand("TRUNCATE TABLE [Provas]");
+            return RedirectToAction("Index");
         }
     }
 }
