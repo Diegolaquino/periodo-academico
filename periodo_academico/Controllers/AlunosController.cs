@@ -39,7 +39,7 @@ namespace periodo_academico.Controllers
         // GET: Alunos/Create
         public ActionResult Create()
         {
-            ViewBag.TurmaId = new SelectList(db.Turmas, "TurmaId", "TurmaId");
+            ViewBag.TurmaId = new SelectList(db.Turmas, "TurmaId", "Turma");
             return View();
         }
 

@@ -1,32 +1,45 @@
-﻿@model periodo_academico.Models.Prova
+﻿@model IEnumerable<periodo_academico.Models.Prova>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Clique no botão abaixo:</h2>
+<h2>Index</h2>
 
-<button onclick="retornarProvas()" type="button" class="btn btn-primary">
-    Gerar Provas
-</button>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Aluno.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroOrdinal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nota)
+        </th>
+        <th></th>
+    </tr>
 
-<table>
-    <thead>
-        <tr>
-            <th>Aluno</th>
-            <th>Ordem</th>
-            <th>Primeira Nota</th>
-            <th>Segunda Nota</th>
-            <th>Terceira</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aluno.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroOrdinal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nota)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProvaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProvaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProvaId })
+        </td>
+    </tr>
+}
 
-        </tr>
-    </tbody>
 </table>
-    
-<script>
-    
-</script>

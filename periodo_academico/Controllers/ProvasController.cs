@@ -1,6 +1,9 @@
-﻿using System;
+﻿using periodo_academico.Models;
+using periodo_academico.Models.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,38 +11,34 @@ namespace periodo_academico.Controllers
 {
     public class ProvasController : Controller
     {
+        private ApplicationDbContext context = new ApplicationDbContext();
+
         // GET: Provas
         public ActionResult Index()
         {
-            return View();
+            var provas = context.Provas;
+            return View(provas.ToList());
         }
 
-        // GET: Provas/Create
-        public ActionResult Create()
+        public ActionResult GerarProvas()
         {
-            return View();
-        }
-
-        // POST: Provas/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            using (TransactionScope t = new TransactionScope())
             {
-                // TODO: Add insert logic here
+                var alunos = context.Alunos;
+                Random numeroAleatorio = new Random();
+                foreach (Aluno a in alunos)
+                {
+                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, NumeroOrdinal = (int)ProvasDoPeriodo.Primeira, Nota = numeroAleatorio.Next(1, 100)/10 });
+                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, NumeroOrdinal = (int)ProvasDoPeriodo.Segunda, Nota = numeroAleatorio.Next(1, 100) / 10 });
+                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, NumeroOrdinal = (int)ProvasDoPeriodo.Terceira, Nota = numeroAleatorio.Next(1, 100) / 10 });
+                }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+                context.SaveChanges();
 
-        // GET: Provas/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
+                t.Complete();
+            }
+
+            return View("Index");
         }
     }
 }
