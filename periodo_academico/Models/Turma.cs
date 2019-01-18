@@ -9,7 +9,7 @@ namespace periodo_academico.Models
     {
         [Key]
         public int TurmaId { get; set; }
-        public int Nome { get; set; }
+        public string Nome { get; set; }
 
         public virtual ICollection<Aluno> Alunos { get; set; }
     }
