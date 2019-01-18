@@ -10,9 +10,18 @@ namespace periodo_academico.Models
     {
         [Key]
         public int ProvaId { get; set; }
-        public int NumeroOrdinal { get; set; }
+
         public int AlunoId { get; set; }
-        public float Nota { get; set; }
+
+        [Display(Name = "Primeira Prova")]
+        public float Nota_1 { get; set; }
+
+        [Display(Name = "Segunda Prova")]
+        public float Nota_2 { get; set; }
+
+        [Display(Name = "Terceira Prova")]
+        public float Nota_3 { get; set; }
+
         public virtual Aluno Aluno { get; set; }
 
     }

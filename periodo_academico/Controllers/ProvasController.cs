@@ -1,10 +1,7 @@
 ﻿using periodo_academico.Models;
-using periodo_academico.Models.Enum;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
-using System.Web;
 using System.Web.Mvc;
 
 namespace periodo_academico.Controllers
@@ -28,9 +25,7 @@ namespace periodo_academico.Controllers
                 Random numeroAleatorio = new Random();
                 foreach (Aluno a in alunos)
                 {
-                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, NumeroOrdinal = (int)ProvasDoPeriodo.Primeira, Nota = numeroAleatorio.Next(0, 10) });
-                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, NumeroOrdinal = (int)ProvasDoPeriodo.Segunda, Nota = numeroAleatorio.Next(0, 10) });
-                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, NumeroOrdinal = (int)ProvasDoPeriodo.Terceira, Nota = numeroAleatorio.Next(0, 10) });
+                    context.Provas.Add(new Prova { AlunoId = a.AlunoId, Nota_1 = numeroAleatorio.Next(0, 10), Nota_2 = numeroAleatorio.Next(0, 10), Nota_3 = numeroAleatorio.Next(0, 10) });
                 }
 
                 context.SaveChanges();
@@ -46,5 +41,12 @@ namespace periodo_academico.Controllers
             context.Database.ExecuteSqlCommand("TRUNCATE TABLE [Provas]");
             return RedirectToAction("Index");
         }
+
+        //public async Task GerandoMediaAluno()
+        //{
+            
+
+
+        //}
     }
 }
