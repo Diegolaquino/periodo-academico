@@ -223,10 +223,10 @@
     <Content Include="Views\Alunos\Details.cshtml" />
     <Content Include="Views\Alunos\Edit.cshtml" />
     <Content Include="Views\Alunos\Index.cshtml" />
+    <Content Include="Views\Provas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Provas\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
