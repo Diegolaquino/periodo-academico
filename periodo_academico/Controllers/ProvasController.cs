@@ -26,7 +26,7 @@ namespace periodo_academico.Controllers
                 Random numeroAleatorio = new Random();
                 foreach (Aluno a in alunos)
                 {
-                    db.Provas.Add(new Prova { AlunoId = a.AlunoId, Nota_1 = numeroAleatorio.Next(0, 10), Nota_2 = numeroAleatorio.Next(0, 10), Nota_3 = numeroAleatorio.Next(0, 10), Media = null });
+                    db.Provas.Add(new Prova { AlunoId = a.AlunoId, Nota_1 = numeroAleatorio.Next(0, 10), Nota_2 = numeroAleatorio.Next(0, 10), Nota_3 = numeroAleatorio.Next(0, 10), Nota_4 = null, Media = null });
                 }
 
                 db.SaveChanges();
