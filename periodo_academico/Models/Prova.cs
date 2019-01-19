@@ -22,6 +22,12 @@ namespace periodo_academico.Models
         [Display(Name = "Terceira Prova")]
         public double Nota_3 { get; set; }
 
+        [Display(Name = "Prova Final")]
+        public double? Nota_4 { get; set; }
+
+        [Display(Name = "Média")]
+        public double? Media { get; set; }
+
         public virtual Aluno Aluno { get; set; }
 
     }

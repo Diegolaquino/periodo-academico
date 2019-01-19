@@ -13,16 +13,13 @@
     @Html.ActionLink("Deletar Alunos", "DeletarTudo")
 </p>
 
-<table class="table table-dark">
+<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Turma.TurmaId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Media)
         </th>
         <th></th>
     </tr>
@@ -36,12 +33,9 @@
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Media)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AlunoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AlunoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AlunoId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.AlunoId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.AlunoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AlunoId })
         </td>
     </tr>
 }
