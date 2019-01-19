@@ -3,15 +3,19 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Gerar Alunos", "GerarAlunos")
-</p>
-<p>
-    @Html.ActionLink("Deletar Alunos", "DeletarTudo")
-</p>
+<style>
+    #links{
+        margin-top: 30px;
+    }
+</style>
+<div id="links">
+    <p class="d-inline-flex">
+        @Html.ActionLink("Gerar Alunos", "GerarAlunos", null, new { @class = "btn btn-dark" })
+    </p>
+    <p class="d-inline-flex">
+        @Html.ActionLink("Deletar Alunos", "DeletarTudo", null, new { @class = "btn btn-dark" })
+    </p>
+</div>
 
 <table class="table">
     <tr>
@@ -21,7 +25,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -32,11 +35,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.AlunoId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.AlunoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.AlunoId })
-        </td>
+       
     </tr>
 }
 

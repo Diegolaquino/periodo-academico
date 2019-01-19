@@ -4,11 +4,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    #links {
+        margin-top: 30px;
+    }
+</style>
 
-<p>
-    @Html.ActionLink("Gerar Nota Final", "GerarNotaFinal")
-</p>
+<div id="links">
+    <p>
+        @Html.ActionLink("Gerar Nota Final", "GerarNotaFinal", null, new { @class = "btn btn-dark" })
+    </p>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -23,7 +29,6 @@
         <th>
             @Html.DisplayNameFor(model => model.MediaFinal)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -39,11 +44,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MediaFinal)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FinalistaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FinalistaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FinalistaId })
         </td>
     </tr>
 }

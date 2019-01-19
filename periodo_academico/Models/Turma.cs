@@ -8,6 +8,7 @@ namespace periodo_academico.Models
     public class Turma
     {
         [Key]
+        [Display(Name = "Turma")]
         public int TurmaId { get; set; }
         public string Nome { get; set; }
 

@@ -14,6 +14,7 @@ namespace periodo_academico.Models
         public int AlunoId { get; set; }
         public string Nome { get; set; }
 
+        [Display(Name = "Turma")]
         public int TurmaId { get; set; }
         public virtual Turma Turma { get; set; }
     }
