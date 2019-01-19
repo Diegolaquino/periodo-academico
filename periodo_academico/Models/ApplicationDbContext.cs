@@ -24,5 +24,7 @@ namespace periodo_academico.Models
         public DbSet<Turma> Turmas { get; set; }
 
         public DbSet<Prova> Provas { get; set; }
+
+        public DbSet<Finalista> Finalistas { get; set; }
     }
 }

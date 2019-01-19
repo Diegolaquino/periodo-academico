@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Net;
 using System.Transactions;
-using System.Web;
 using System.Web.Mvc;
 using periodo_academico.Models;
 
@@ -113,6 +108,7 @@ namespace periodo_academico.Controllers
         public ActionResult DeletarTudo()
         {
             db.Database.ExecuteSqlCommand("DELETE FROM [Provas]");
+            db.Database.ExecuteSqlCommand("DELETE FROM [Finalistas]");
             db.Database.ExecuteSqlCommand("DELETE FROM [Alunos]");
 
             return RedirectToAction("Index");

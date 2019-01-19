@@ -134,6 +134,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlunosController.cs" />
+    <Compile Include="Controllers\FinalistasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProvasController.cs" />
     <Compile Include="Global.asax.cs">
@@ -146,6 +147,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aluno.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Finalista.cs" />
     <Compile Include="Models\Prova.cs" />
     <Compile Include="Models\Turma.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -462,12 +464,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Alunos\Create.cshtml" />
-    <Content Include="Views\Alunos\Delete.cshtml" />
-    <Content Include="Views\Alunos\Details.cshtml" />
-    <Content Include="Views\Alunos\Edit.cshtml" />
     <Content Include="Views\Alunos\Index.cshtml" />
     <Content Include="Views\Provas\Index.cshtml" />
+    <Content Include="Views\Finalistas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

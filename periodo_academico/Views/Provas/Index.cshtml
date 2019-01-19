@@ -18,6 +18,9 @@
 <p>
     @Html.ActionLink("Gerar Nota Final", "GerarNotaFinal")
 </p>
+<p>
+    @Html.ActionLink("Gerar Finalistas", "GerarFinalistas", "Finalistas", null, null)
+</p>
 <table class="table">
     <tr>
         <th>
@@ -74,7 +77,7 @@
         {
             <td class="alert-success">Aprovado</td>
         }
-        else if (item.Media < 4)
+        else if (item.Media < 4 || ((item.Nota_4 != null) && (item.Media < 5) ))
         {
             <td class="alert-danger">Reprovado</td>
         }
